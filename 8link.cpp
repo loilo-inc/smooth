@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------------------//
+//---------------------------------------------------------------------------------------//
 // 概要: 8連結系の処理
 //---------------------------------------------------------------------------------------//
 
@@ -26,12 +26,9 @@
 template<typename PixelType>
 static inline int CountLength(BlendingInfo<PixelType> *info, long target, int NextPixelStepIn, int Min, int Max, int LimitFromHere)
 {
-    int         width   = GET_WIDTH(info->input),
-                height  = GET_HEIGHT(info->input);
     int         Length=0;
     int         Sign    = GET_SIGN(NextPixelStepIn);    // 符号
     int         LenDiff = Sign * 1; // -1 or +1
-    int         range   = info->range;
     
     
     while(  Min < Length + LimitFromHere && Length + LimitFromHere < Max)
@@ -55,12 +52,9 @@ static inline int CountLengthTwoLines(	BlendingInfo<PixelType> *info, long targe
 										int Min, int Max, int LimitFromHere,
 										bool *t0_flg )
 {
-    int         width   = GET_WIDTH(info->input),
-                height  = GET_HEIGHT(info->input);
     int         Length=0;
     int         Sign    = GET_SIGN(NextPixelStepIn);    // 符号
     int         LenDiff = Sign * 1; // -1 or +1
-    int         range   = info->range;
     
     *t0_flg = false;    // t0の方が違う色でしたフラグ
     
@@ -220,12 +214,9 @@ static void Link8Execute(   BlendingInfo<PixelType> *info,
 
 
     int         i;
-    PF_LayerDef *input      = info->input,
-                *output     = info->output;
     PixelType   TempPixel[2][MAX_LENGTH];
     int         TempLength;
     int         Length[2];  // 0 : 左or上  1 : 右or下
-    int         range       = info->range;
     bool        inside_flg[2] = { false, false };
     bool        flag;
 
@@ -600,8 +591,7 @@ void Link8Mode02Execute(BlendingInfo<PixelType> *info)
 
     int         in_width    = GET_WIDTH(info->input),
                 in_height   = GET_HEIGHT(info->input),
-                out_width   = GET_WIDTH(info->output),
-                out_height  = GET_HEIGHT(info->output);
+    out_width   = GET_WIDTH(info->output);
     
     Link8Execute(   info, 
                     1,
@@ -622,8 +612,7 @@ void Link8Mode04Execute(BlendingInfo<PixelType> *info)
 {
     int         in_width    = GET_WIDTH(info->input),
                 in_height   = GET_HEIGHT(info->input),
-                out_width   = GET_WIDTH(info->output),
-                out_height  = GET_HEIGHT(info->output);
+    out_width   = GET_WIDTH(info->output);
     
     Link8Execute(   info, 
                     1,
@@ -645,8 +634,7 @@ void Link8Mode01Execute(BlendingInfo<PixelType> *info)
 {
     int         in_width    = GET_WIDTH(info->input),
                 in_height   = GET_HEIGHT(info->input),
-                out_width   = GET_WIDTH(info->output),
-                out_height  = GET_HEIGHT(info->output);
+    out_width   = GET_WIDTH(info->output);
     
     Link8Execute(   info, 
                     -in_width,
@@ -667,8 +655,7 @@ void Link8Mode03Execute(BlendingInfo<PixelType> *info)
 {
     int         in_width    = GET_WIDTH(info->input),
                 in_height   = GET_HEIGHT(info->input),
-                out_width   = GET_WIDTH(info->output),
-                out_height  = GET_HEIGHT(info->output);
+    out_width   = GET_WIDTH(info->output);
     
     Link8Execute(   info, 
                     -in_width,
@@ -737,14 +724,12 @@ void Link8SquareBlendOutside(   BlendingInfo<PixelType> *info,
 template<typename PixelType>
 void Link8SquareExecute( BlendingInfo<PixelType> *info )
 {
-    PF_LayerDef *input      = info->input;
     PixelType	*in_ptr     = info->in_ptr;
     int         in_width    = GET_WIDTH(info->input),
                 out_width   = GET_WIDTH(info->output),
                 in_height   = GET_HEIGHT(info->input);
-    int         range       = info->range;
     int         i;
-    unsigned int flg=0, link_count=0;
+    unsigned int flg=0;
 
     // まず8連結状態を調べる
     if( ComparePixelEqual( info->in_target, info->in_target-in_width -1 )) flg |= (1<<0);   // パターン0

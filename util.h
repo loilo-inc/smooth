@@ -1,4 +1,4 @@
-﻿
+
 #ifndef __UTIL_H
 #define __UTIL_H
 
@@ -169,8 +169,8 @@ typedef unsigned long		KP_PIXEL32;	// 8bbit per channel
 typedef unsigned long long	KP_PIXEL64;	// 16bit per channel
 
 template<typename PixelType> static inline unsigned int getMaxValue() { return ~0; }
-template <> static inline unsigned int getMaxValue<PF_Pixel16>(){ return 0x8000; }
-template <> static inline unsigned int getMaxValue<PF_Pixel8>()	{ return 0xff; }
+template <> inline unsigned int getMaxValue<PF_Pixel16>(){ return 0x8000; }
+template <> inline unsigned int getMaxValue<PF_Pixel8>()	{ return 0xff; }
 
 
 

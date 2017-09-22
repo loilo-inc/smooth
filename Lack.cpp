@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 // コメント     : 2pixel以上の欠けているような状態の角の処理
 //---------------------------------------------------------------------------//
 
@@ -6,7 +6,7 @@
 #include "util.h"
 #include "define.h"
 
-#include "lack.h"
+#include "Lack.h"
 
 //---------------------------------------------------------------------------//
 // モード 1
@@ -16,8 +16,8 @@
 template<typename PixelType>
 void LackMode01Execute( BlendingInfo<PixelType> *info )
 {
-    int h, v, width;
-    int range;
+    long h, v, width;
+    long range;
 
 	PixelType	*in_ptr = info->in_ptr;
     PF_LayerDef	*input  = info->input;
@@ -72,8 +72,8 @@ template<typename PixelType>
 void LackMode02Execute( BlendingInfo<PixelType> *info )
 {
     // モード02に該当するか調べる
-    int h, v, width;
-    int         range;
+    long h, v, width;
+    long         range;
 
 	PixelType	*in_ptr = info->in_ptr;
     PF_LayerDef	*input  = info->input;
@@ -133,8 +133,8 @@ void LackMode02Execute( BlendingInfo<PixelType> *info )
 template<typename PixelType>
 void LackMode0304Execute( BlendingInfo<PixelType> *info )
 {
-    int         i, j, target, h, v, width;
-    int         range;
+    long         i, j, target, h, v, width;
+    long         range;
 
 	PixelType	*in_ptr = info->in_ptr;
     PF_LayerDef	*input  = info->input;

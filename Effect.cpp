@@ -1,4 +1,4 @@
-﻿
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -93,19 +93,6 @@ static inline void getNullPixel(PF_Pixel8 *null_pixel )
 }
 
 
-
-// デモ線カラー
-static inline void getDemoLinePixel(PF_Pixel16 *line)
-{ 
-	PF_Pixel16	color = { 0x8000, 0x8000, 0x0, 0x0 };
-	*line = color;
-}
-
-static inline void getDemoLinePixel(PF_Pixel8 *line)
-{ 
-	PF_Pixel8	color = { 0xFF, 0xFF, 0, 0 };
-	*line = color;
-}
 
 
 
@@ -424,7 +411,7 @@ static PF_Err ParamsSetup(  PF_InData       *in_data,
     PF_STRCPY(def.name, "white option");
     def.u.bd.value = def.u.bd.dephault = FALSE;
     def.u.bd.u.nameptr = "transparent"; /* this is strictly a pointer; don't STRCPY into it! */
-    if (err = PF_ADD_PARAM(in_data, -1, &def)) return err;
+    if (err == PF_ADD_PARAM(in_data, -1, &def)) return err;
 
     AEFX_CLR_STRUCT(def);
 
@@ -493,7 +480,8 @@ static PF_Err smoothing(PF_InData   *in_data,
     err = PF_COPY(input, output, NULL, NULL);
 
     
-    long        in_width,in_height, out_width, out_height, i,j, in_target, out_target, count = 0;
+    int     in_width,in_height, out_width, out_height, i,j;
+    long    in_target, out_target;
     unsigned int range = (unsigned int)(params[PARAM_RANGE]->u.fs_d.value * (getMaxValue<PixelType>() * 4)) / 100; 
     float       line_weight = (float)(params[PARAM_LINE_WEIGHT]->u.fs_d.value / 2.0 + 0.5),
                 weight;

@@ -1,4 +1,4 @@
-﻿
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -32,7 +32,6 @@ void PrintAPIErr( APIErr *perr)
 //---------------------------------------------------------------------------//
 // DEBUG system
 
-#ifdef	AE_OS_WIN
 
 #ifdef  _DEBUG
 
@@ -52,52 +51,6 @@ void DebugPrint(char *format, ...)
 }
 
 #endif  /* _DEBUG */
-
-#else
-
-// Mac
-void DebugPrint(char *format, ...)
-{
-	char str[1024];
-	memset( str, 0, sizeof(str));
-	va_list args;
-
-	va_start(args, format);
-	vsnprintf( str, 1024, format, args );
-	va_end(args);
-
-
-	CFStringRef cf_str = CFStringCreateWithBytes (
-   							NULL,
-   							(unsigned char*)str,
-   							1024,
-   							CFStringGetSystemEncoding(),
-   							false );
-
-    
-	DialogRef       dialog;
-    DialogItemIndex index;
-
-    CreateStandardAlert(
-        kAlertStdAlertOKButton,
-        CFSTR("message"),
-		cf_str,
-        NULL,
-        &dialog
-    );
-
-
-    RunStandardAlert(
-        dialog,
-        NULL,
-        &index
-    );
-
-	CFRelease( cf_str );
-}
-
-#endif
-
 
 
 
@@ -248,7 +201,7 @@ template<typename PixelType>
 static inline void getDebugPixel(PixelType *p)	{ p->red=255; p->green=0; p->blue=0; p->alpha=255; }
 
 template<> 
-static inline void getDebugPixel<PF_Pixel16>(PF_Pixel16 *p)	{ p->red=0x8000; p->green=0; p->blue=0; p->alpha=0x8000; }
+inline void getDebugPixel<PF_Pixel16>(PF_Pixel16 *p)	{ p->red=0x8000; p->green=0; p->blue=0; p->alpha=0x8000; }
 
 template<typename PixelType> void SetDebugPixel(PixelType *out_ptr, PF_LayerDef *output, int x, int y)
 {

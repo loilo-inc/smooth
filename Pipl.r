@@ -1,4 +1,4 @@
-﻿#include "AEConfig.h"
+#include "AEConfig.h"
 #include "AE_EffectVers.h"
 
 #ifndef AE_OS_WIN
