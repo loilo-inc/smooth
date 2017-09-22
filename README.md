@@ -7,6 +7,7 @@ AfterEffects CC2017で使えるように、最新のビルド環境に対応さ�
 
 ## ダウンロード
 バイナリーはこちらからダウンロードできます。
+
 Windows
 
 Mac
@@ -17,8 +18,9 @@ Apache2.0
 
 ## ビルド方法
 ### Win
-Windows10 64bit / VisualStudio 2017
+Windows10 64bit / VisualStudio2017  
 AfterEffects CC2017 SDKをダウロードしてsmoothと同じ階層のディレクトリに置いてください。
 
 ### Mac
-MacOSX Sierra / XCode9.0
+MacOSX Sierra / XCode9.0  
+AfterEffects CC2017 SDKをダウロードして、sdkとリネーム後、smoothと同じ階層のディレクトリに置いてください。
