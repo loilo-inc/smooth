@@ -55,27 +55,6 @@ void PrintAPIErr( APIErr *perr);
 
 
 
-//---------------------------------------------------------------------------//
-// ベータ版関連
-
-#if  SK_STAGE_BETA
-/* 使用期限 */
-#define BETA_END_YEAR       (2008-1900)
-#define BETA_END_MONTH      (8)
-#define BETA_START_YEAR     (2008-1900)
-#define BETA_START_MONTH    (5)
-
-typedef int TimeFlag_t;
-enum{
-    TIME_FLAG_INVALID   = -1,
-    TIME_FLAG_VALID,
-    TIME_FLAG_OVER
-};
-
-TimeFlag_t  BetaTimer();
-
-#endif
-
 
 //---------------------------------------------------------------------------//
 // Debugファイル

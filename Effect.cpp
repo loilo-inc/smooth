@@ -333,8 +333,6 @@ static PF_Err About (   PF_InData       *in_data,
 {
 #if SK_STAGE_DEVELOP
     const char *stage_str= "Debug";
-#elif SK_STAGE_BETA
-    const char *stage_str= "beta";
 #elif SK_STAGE_RELEASE
     const char *stage_str= "";
 #endif
@@ -896,21 +894,6 @@ static PF_Err Render (  PF_InData       *in_data,
     PF_Err err = PF_Err_NONE;
 
 	PF_LayerDef *input  = &params[PARAM_INPUT]->u.ld;
-
-#if SK_STAGE_BETA
-    //------ 期限制限部分 ------//
-    switch(TimeFlag)
-    {
-        case    TIME_FLAG_INVALID:
-        case    TIME_FLAG_OVER:
-            err = PF_COPY(input, output, NULL, NULL);
-            return  err;
-
-        default:
-            break;
-    }
-#endif
-    
 
 	PF_Pixel16	*in_ptr16, *out_ptr16;
 	PF_GET_PIXEL_DATA16(output, NULL, &out_ptr16 );
