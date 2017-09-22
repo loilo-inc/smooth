@@ -402,8 +402,6 @@ static PF_Err ParamsSetup(  PF_InData       *in_data,
 {
     
     PF_ParamDef def;
-    PF_Err      err = PF_Err_NONE;
-
     AEFX_CLR_STRUCT(def);   // defを初期化 //
 
     def.param_type = PF_Param_CHECKBOX;
@@ -411,7 +409,8 @@ static PF_Err ParamsSetup(  PF_InData       *in_data,
     PF_STRCPY(def.name, "white option");
     def.u.bd.value = def.u.bd.dephault = FALSE;
     def.u.bd.u.nameptr = "transparent"; /* this is strictly a pointer; don't STRCPY into it! */
-    if (err == PF_ADD_PARAM(in_data, -1, &def)) return err;
+    
+    PF_ADD_PARAM(in_data, -1, &def);
 
     AEFX_CLR_STRUCT(def);
 
