@@ -1,25 +1,24 @@
 # smooth
-アニメーションのスムージングを行うAfterEffects用のプラグインです。
+アニメーションのスムージングを行うAfterEffects用のプラグインです。  
+もともと有償で販売していたものをオープンソース化しました。
 
-もともと有償販売していましたがApache2.0ライセンスでオープンソース化しました！
-機能は有償販売していた時のままですが、AfterEffects CC2017で利用できるように64bit化なども行っています。
+AfterEffects CC2017で使えるように、最新のビルド環境に対応させています。  
+ライセンスはApache2.0です。派生品も自由に作れますのでご自由にご利用ください。  
 
-# ダウンロード
+## ダウンロード
 バイナリーはこちらからダウンロードできます。
 Windows
 
 Mac
 
 
-# ライセンス
+## ライセンス
 Apache2.0
 
-folkも大歓迎です。
-
-# ビルド方法
-## Win
+## ビルド方法
+### Win
 Windows10 64bit / VisualStudio 2017
 AfterEffects CC2017 SDKをダウロードしてsmoothと同じ階層のディレクトリに置いてください。
 
-## Mac
-MacOSX Sierra / XCode7
+### Mac
+MacOSX Sierra / XCode9.0
