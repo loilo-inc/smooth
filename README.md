@@ -1,16 +1,18 @@
-# smooth
+# SMOOTH
 アニメーションのスムージングを行うAfterEffects用のプラグインです。  
 もともと有償で販売していたものをオープンソース化しました。
 
 AfterEffects CC2017で使えるように、最新のビルド環境に対応させています。  
-ライセンスはApache2.0です。派生品も自由に作れますのでご自由にご利用ください。  
+ライセンスはApache2.0です。ご自由にご利用ください。  
 
 ## ダウンロード
 バイナリーはこちらからダウンロードできます。
 
-Windows
+Mac  
+http://assets.loilo.tv/smooth/smooth.Mac.1.4.0.zip
 
-Mac
+Windows  
+http://assets.loilo.tv/smooth/smooth.Win.1.4.0.zip
 
 
 ## ライセンス
